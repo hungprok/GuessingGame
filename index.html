@@ -4,31 +4,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>GUESSING GAME</title>
 </head>
 
-<body>
-    <div>
-        <div style="font-weight: bold; text-align: center; font-size: 50px;">
+<body class="p-3 mb-2 bg-primary text-white text-monospace">
+    <div class="container text-center ">
+        <div class="text-warning" style="font-weight: bold; text-align: center; font-size: 52px; line-height: 55px;">
             WELCOME TO GUESSING GAME</div>
-        <P style="text-align: center; font-size: 30px;">INSTRUCTION:<br> We give you a random number.<br>Try your best to guess that number in a limited amount of chances<br>which are going to be decreased every 10 seconds.<br>Have fun and good luck! </P>
+        <div class="container border-warning pt-3 pb-3" style="width: 600px; min-width: 200px; border: solid 5px; border-top: 0px; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;">
+            <P style="text-align: center; font-size: 16px;"> We will give you a random number.<br>Try your best to guess that number in a limited amount of chances which are going to be decreased every 10 seconds.<br>Have fun and good luck!
+            </P>
+            <div class="container text-left" style="width: 420px; min-width: 300px;">
+                <div><span><button class="btn btn-success m-1 btn-sm">START</button></span>
+                    <span>to begin playing our awesome game</span></div>
+                <div><span><button class="btn btn-danger m-1 btn-sm">GUESS</button></span>
+                    <span>to guess the number you just entered</span></div>
+                <div><span><button class="btn btn-outline-warning m-1 btn-sm">RESET</button></span>
+                    <span>to reset the game and start over</span></div>
+            </div>
+        </div>
     </div>
-    <div style="text-align: center; font-size: 50px;">
-        <span>TIMER: </span>
-        <span id="timecount"></span>
-    </div>
-    <div style="text-align: center; font-size: 50px;">
-        <span>CHANCES LEFT: </span><span id="chanceArea"></span></div>
-    <div>
-        <input type="number" id="userInput">
-        <button id="GuessButton">GUESS</button>
-        <button id="ResetButton">RESET</button>
-        <button id="StartButton">START</button>
-    </div>
-    <div id="resultArea">Result is here</div>
-    <span>History: </span><span id="historyArea"></span>
-    <div><span id="YourGameHistory"></span></div>
-    <script src="main.js"></script>
+    <div class="container mt-5" style="max-width: 1000px;">
+        <div class="row">
+            <div class="col-sm">
+
+                <div class="row">
+                    <div class="col-sm text-right p-0">
+                        <img src="https://ecloudproviders.com/wp-content/uploads/2019/04/timer.gif" alt="" style="min-width:0px; width:100px;">
+                    </div>
+                    <div class="col-sm p-0" style="font-size: 30px;">
+                        <div>TIMER</div>
+                        <div id="timecount"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm" style="max-width: 300px; justify-content: center;">
+                <div class="col-sm text-wrap col-{breakpoint}-auto">
+                    <div class="text-center">
+                        <input type="number" id="userInput" class="shadow p-1 m-3 bg-white rounded font-weight-bolder border border-dark rounded-pill text-center" style="font-size: 30px; width: 150px;">
+                    </div>
+                    <div style="height: 50px;" class="text-center" id="resultArea"></div>
+                </div>
+            </div>
+
+            <div class="col-sm">
+                <div class="row">
+                    <div class="col-sm text-right pl-0 ml-0" style="font-size: 30px;">
+                        <div>CHANCES</div>
+                        <div id="chanceArea">
+                        </div>
+                    </div>
+                    <div class="col-sm text-left pl-0">
+                        <img src="https://images.squarespace-cdn.com/content/v1/574ba3064c2f85ab1d8f303a/1482530718061-ZJKESM2XIMLZX7QKLF9Q/ke17ZwdGBToddI8pDm48kO2pS9cMHbO4RvHPc8Skf1tZw-zPPgdn4jUwVcJE1ZvWhcwhEtWJXoshNdA9f1qD7SWQ2jRIjdsAnJr4FtnFyzyxjnbYLGVnycrUpreQbiiMeKKLq5fmW_HMSw49sQmVJA/coin.gif?format=1500w"
+                            alt="" style="width: 90px; height: 100%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div style="text-align: center;">
+            <div>
+                <button id="StartButton" class="btn btn-success m-3 btn-lg">START</button>
+                <button id="GuessButton" class="btn btn-danger m-3 btn-lg">GUESS</button>
+                <button id="ResetButton" class="btn btn-outline-warning m-3 btn-lg">RESET</button>
+            </div>
+            <div class="text-center">
+
+                <div>NUMBER(S) YOU HAVE GUESSED:</div>
+                <span id="historyArea"></span>
+                <div><span id="YourGameHistory"></span></div>
+            </div>
+            <script src="main.js"></script>
 </body>
 
 </html>

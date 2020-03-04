@@ -5,9 +5,10 @@ console.log(randomNumber);*/
 //Get a random number 1-100
 let randomNumber = Math.floor(Math.random() * 100 + 1);
 console.log(randomNumber);
-
+let time = 10;
 let resultArea = document.getElementById("resultArea");
 let chance = 3;
+document.getElementById('timecount').innerHTML = time;
 let chanceArea = document.getElementById("chanceArea");
 chanceArea.innerHTML = `${chance}`;
 let history = [];
@@ -26,10 +27,12 @@ ResetButton.addEventListener("click", reset)
 
 
 function reset() {
+    timeOut();
     chance = 3;
     history = [];
     document.getElementById("GuessButton").disabled = false;
-    historyArea.innerHTML = `Your guess: ${history}`;
+    document.getElementById("StartButton").disabled = false;
+    historyArea.innerHTML = `${history}`;
     chanceArea.innerHTML = `${chance}`;
     message = "";
     resultArea.innerHTML = `${message}`;
@@ -37,15 +40,17 @@ function reset() {
     console.log(randomNumber);
     document.getElementById('userInput').value = '';
     document.getElementById("ResetButton").style.color = "";
+    time = 10;
+    document.getElementById('timecount').innerHTML = time;
 }
 
 
 function guess() {
-    time = 0;
+    time = 10;
     let userNumber = userguess.value;
     if (history.includes(userNumber)) {
-        alert("You already guessed thaat number! Try other one!")
-        time = 0;
+        alert("You have already guessed that number! Try other one!")
+        time = 10;
         return;
     }
     let message = '';
@@ -78,21 +83,22 @@ function guess() {
             history.push(userNumber);
         }
         document.getElementById("GuessButton").disabled = true;
+        document.getElementById("StartButton").disabled = true;
     }
     resultArea.innerHTML = `${message}`;
     chanceArea.innerHTML = `${chance}`;
-    historyArea.innerHTML = `Your guess: ${history}`;
+    historyArea.innerHTML = `${history}`;
 
 
 }
 
-let time = 0; // time start from 0
+// time start from 0
 let myTime; // timer will be assign to this variable
 
 function timecounting() {
     myTime = setInterval(() => {
-            time += 1
-            if (time == 5 && chance > 0) {
+            time -= 1
+            if (time == 0 && chance > 0) {
                 timeOut();
                 timecounting();
                 guess()
@@ -106,7 +112,7 @@ function timecounting() {
 
 function timeOut() {
     clearInterval(myTime);
-    time = 1;
+    time = 10;
 }
 
 StartButton.addEventListener("click", timecounting);
